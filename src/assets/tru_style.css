@@ -1,0 +1,84 @@
+body,html {
+  font-family:sans-serif, 'Microsoft YaHei UI', 'Avenir', Helvetica, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
+
+/*滚动条样式*/
+
+
+::-webkit-scrollbar{
+  width:4px;
+  height:10px;
+}
+::-webkit-scrollbar-track{
+  background: #f6f6f6;
+  border-radius:2px;
+}
+::-webkit-scrollbar-thumb{
+  background: #aaa;
+  border-radius:2px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #747474;
+}
+::-webkit-scrollbar-corner {
+  background: #f6f6f6;
+}
+/*滚动条样式 结束*/
+.tru_font_main{
+
+}
+.tru_font_describe{
+  color: #999;
+}
+
+.tru_center{  /*居中*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.tru_center_fixed{  /*居中 fixed定位*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.tru_whole{ /*占全部区域*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.tru_whole_fixed{ /*占全部区域 fixed*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.tru_bg_width{  /*背景图片 宽度占满*/
+  background-position:center center;
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.tru_bg_height{/*背景图片 高度占满*/
+  background-position:center center;
+  -webkit-background-size:auto 100%;
+  background-size:auto 100%;
+  background-repeat: no-repeat;
+}
+
