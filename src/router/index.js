@@ -10,7 +10,7 @@ export default new Router({
       redirect: '/login'
     },
     {
-      path: '/',
+      path: '/test',
       name: 'test',
       component:resolve => require(['../pages/test'], resolve) //测试
     },
