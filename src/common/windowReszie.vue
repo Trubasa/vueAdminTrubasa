@@ -9,8 +9,8 @@
     name: "window-resize",
     data() {
       return {
-        timer:null, //定时器,
-        window:window
+        timer:null, //定时器
+        window:window,
       }
     },
     mounted(){
