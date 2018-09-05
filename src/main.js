@@ -114,11 +114,7 @@ Vue.use(Tooltip);
 // let elementList=['Menu','Submenu','MenuItem','MenuItemGroup']
 
 
-import elementUi from 'element-ui';
-Vue.use(elementUi.Menu);
-Vue.use(elementUi.Submenu);
-Vue.use(elementUi.MenuItem);
-Vue.use(elementUi.MenuItemGroup);
+
 
 //引入element-ui 结束
 

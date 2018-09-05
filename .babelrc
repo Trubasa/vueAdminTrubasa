@@ -24,13 +24,6 @@
         "camel2DashComponentName": false
       }
     ],
-    [
-      "component",
-      {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
-      }
-    ],
     "transform-vue-jsx",
     "transform-runtime"
   ]
