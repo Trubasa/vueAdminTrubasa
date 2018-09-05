@@ -8,7 +8,7 @@
       <h1 class="system_title">Tru-admin System</h1>
 
       <mu-paper :z-depth="1"  style="padding: 10px;position: relative;">
-        <mu-form ref="form" :model="validateForm" class="mu-demo-form">
+        <mu-form ref="form"  :model="validateForm" class="mu-demo-form">
           <mu-form-item label="用户名" label-float prop="username" :rules="usernameRules">
             <mu-text-field v-model="validateForm.username" prop="username"></mu-text-field>
           </mu-form-item>
@@ -31,7 +31,7 @@
         </mu-form>
       </mu-paper>
 
-      <div class="tru_font_describe" style="text-align: center">power by @Trubasa</div>
+      <div class="tru_font_describe" style="text-align: center;padding-top: 20px;">power by @Trubasa</div>
     </div>
 
   </div>
