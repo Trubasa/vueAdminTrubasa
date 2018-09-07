@@ -1,15 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 // import Vue from 'vue'
+import axios from 'axios'
+import netWork from './assets/netWork'
 import App from './App'
 import router from './router'
-
 import './assets/tru_style.css'
-
 import bus from './store/bus'
-Vue.prototype.$bus=bus
-
 import myComponents from './assets/myComponents'
+
 Vue.use(myComponents);
 
 import store from './store/store'
@@ -113,14 +112,16 @@ Vue.use(Tooltip);
 
 // let elementList=['Menu','Submenu','MenuItem','MenuItemGroup']
 
-
+Vue.prototype.$netWork=netWork;
+Vue.prototype.$axios=axios;
+Vue.prototype.$bus=bus;
 
 
 //引入element-ui 结束
 
 Vue.config.productionTip = false
 
- import './assets/cover.css' //样式覆盖，覆盖默认框架的样式
+import './assets/cover.css' //样式覆盖，覆盖默认框架的样式
 
 /* eslint-disable no-new */
 new Vue({

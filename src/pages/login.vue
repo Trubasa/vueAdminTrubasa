@@ -9,15 +9,18 @@
 
       <mu-paper :z-depth="1"  style="padding: 10px;position: relative;">
         <mu-form ref="form"  :model="validateForm" class="mu-demo-form">
-          <mu-form-item label="用户名" label-float prop="username" :rules="usernameRules">
-            <mu-text-field v-model="validateForm.username" prop="username"></mu-text-field>
-          </mu-form-item>
-          <mu-form-item label="密码" label-float prop="password" :rules="passwordRules">
-            <mu-text-field type="password" v-model="validateForm.password" prop="password"></mu-text-field>
-          </mu-form-item>
-          <mu-form-item prop="isAgree" :rules="argeeRules">
+          <div style="padding: 0 10px;">
+            <mu-form-item label="用户名" label-float prop="username" :rules="usernameRules">
+              <mu-text-field v-model="validateForm.username" prop="username"></mu-text-field>
+            </mu-form-item>
+            <mu-form-item label="密码" label-float prop="password" :rules="passwordRules">
+              <mu-text-field type="password" v-model="validateForm.password" prop="password"></mu-text-field>
+            </mu-form-item>
+          </div>
+
+          <!--<mu-form-item prop="isAgree" :rules="argeeRules">
             <mu-checkbox label="同意用户协议" v-model="validateForm.isAgree"></mu-checkbox>
-          </mu-form-item>
+          </mu-form-item>-->
           <mu-form-item>
             <mu-flex class="flex-demo" justify-content="center" fill>
               <mu-button full-width color="primary" @click="submit">提交</mu-button>
@@ -65,7 +68,41 @@
       submit() {
         this.$refs.form.validate().then((result) => {
           console.log('form valid: ', result)
+          if(result){
+            this.$axios.all([this.getUserInfo(),this.getUserList()])
+              .then(()=>{
+                console.log('可以登录了');
+                this.login()
+              })
+          }
         });
+      },
+      login(){
+        this.$netWork.post('/login')
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
+      getUserList(){
+        return this.$netWork.get('/userList')
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
+      getUserInfo(){
+        return this.$netWork.get('/userInfo')
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       },
       clear() {
         this.$refs.form.clear();
