@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <tru-load-more>
-      hello
-    </tru-load-more>
+  <div class="tru-load-more">
+    <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+      <slot></slot>
+    </mu-load-more>
   </div>
 </template>
 
 <script>
   export default {
-    name: "test",
+    name: "tru-load-more",
     data () {
       return {
         num: 10,
@@ -17,7 +17,7 @@
         text: 'List'
       }
     },
-    methods: {
+    methods:{
       refresh () {
         this.refreshing = true;
         this.$refs.container.scrollTop = 0;
@@ -36,28 +36,10 @@
         }, 2000)
       }
     }
+
   }
 </script>
 
 <style scoped>
 
 </style>
-<style >
-  .demo-loadmore-wrap {
-    width: 100%;
-    max-width: 360px;
-    height: 420px;
-    display: flex;
-    flex-direction: column;
-
-  }
-  .demo-loadmore-wrap .mu-appbar {
-    width: 100%;
-  }
-  .demo-loadmore-content {
-    flex: 1;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-</style>
-
