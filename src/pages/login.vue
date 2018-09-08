@@ -16,6 +16,7 @@
             <mu-form-item label="密码" label-float prop="password" :rules="passwordRules">
               <mu-text-field type="password" v-model="validateForm.password" prop="password"></mu-text-field>
             </mu-form-item>
+
           </div>
 
           <!--<mu-form-item prop="isAgree" :rules="argeeRules">
@@ -23,13 +24,11 @@
           </mu-form-item>-->
           <mu-form-item>
             <mu-flex class="flex-demo" justify-content="center" fill>
-              <mu-button v-loading="btnLoading" data-mu-loading-size="24" full-width color="primary" @click="submit">登录</mu-button>
+              <tru-loading-btn style="width: 100%;" @tru-click="submit" ref="loginBtn" color="primary">登陆</tru-loading-btn>
             </mu-flex>
             <mu-flex class="flex-demo" justify-content="center" fill>
               <mu-button full-width @click="clear">重置</mu-button>
             </mu-flex>
-
-
           </mu-form-item>
         </mu-form>
       </mu-paper>
@@ -45,7 +44,6 @@
     name: "login",
     data() {
       return {
-        btnLoading:false,
         usernameRules: [
           {validate: (val) => !!val, message: '必须填写用户名'},
           {validate: (val) => val.length >= 3, message: '用户名长度大于3'}
@@ -67,7 +65,6 @@
     },
     methods: {
       submit() {
-        this.btnLoading=true;
         this.$refs.form.validate().then((result) => {
           console.log('form valid: ', result)
           if(result){
@@ -76,6 +73,8 @@
                 console.log('可以登录了');
                 this.login()
               })
+          }else{
+            // this.$refs.loginBtn.loading=false
           }
         });
       },
@@ -83,7 +82,10 @@
         let that=this;
         this.$netWork.post('/login',this.validateForm)
           .then(function (response) {
-            that.btnLoading=false;
+            console.log('loading按钮',that.$refs.loginBtn.loading=false)
+            that.$router.push({
+              name:'content'
+            })
             console.log(response);
           })
           .catch(function (error) {

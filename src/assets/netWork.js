@@ -8,15 +8,20 @@ muToast.config({
   position:'top'
 })
 
-
 let page={
   toastHandler(data){
-    let isShow=data.show
-    let msg=data.msg
+    if(!data||!('show' in data)){
+      return;
+    }
+
+    let isShow=data.show;
+    let msg=data.msg;
+    if(data.state!=10000){
+      isShow=4;
+    }
     console.log('toastHandler',data);
     if(isShow||isShow==0){
-
-      switch (data.show){
+      switch (isShow){
         case 0:
           muToast.message(msg)
           break;
@@ -38,8 +43,8 @@ let page={
 }
 
 let netWrok = axios.create({
-  baseURL: '/api',
-  timeout: 6000,
+  baseURL: productConfig.apiPath||'',
+  timeout: productConfig.timeout||6000,
   // headers: {'X-Custom-Header': 'foobar'}
   //`transformResponse`选项允许我们在数据传送到`then/catch`方法之前对数据进行改动
   responseType:'json',//default
@@ -50,8 +55,5 @@ let netWrok = axios.create({
     return data;
   }],
 });
-
-
-
 
 export default netWrok

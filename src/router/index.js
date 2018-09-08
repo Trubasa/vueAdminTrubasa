@@ -18,6 +18,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component:resolve => require(['../pages/login'], resolve) //登陆
+    },
+    {
+      path: '/content',
+      name: 'content',
+      component:resolve => require(['../pages/content'], resolve) //登陆
     }
   ]
 })

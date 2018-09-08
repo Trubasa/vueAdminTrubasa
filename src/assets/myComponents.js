@@ -6,6 +6,7 @@ import example from '../common/example.vue'
 import windowReszie from '../common/windowReszie.vue'
 import truImage from '../common/truImage'
 import truLoadMore from '../common/truLoadMore'
+import truLoadingBtn from '../common/truLoadingBtn'
 
 var myComponents={
   install:function(Vue){
@@ -17,6 +18,7 @@ var myComponents={
     Vue.component(messageBox.name,messageBox);
     Vue.component(truImage.name,truImage);
     Vue.component(truLoadMore.name,truLoadMore);
+    Vue.component(truLoadingBtn.name,truLoadingBtn);
 
 
   }  //'Loading'这就是后面可以使用的组件的名字，install是默认的一个方法
