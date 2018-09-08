@@ -23,7 +23,7 @@
           </mu-form-item>-->
           <mu-form-item>
             <mu-flex class="flex-demo" justify-content="center" fill>
-              <mu-button full-width color="primary" @click="submit">提交</mu-button>
+              <mu-button v-loading="btnLoading" data-mu-loading-size="24" full-width color="primary" @click="submit">登录</mu-button>
             </mu-flex>
             <mu-flex class="flex-demo" justify-content="center" fill>
               <mu-button full-width @click="clear">重置</mu-button>
@@ -45,6 +45,7 @@
     name: "login",
     data() {
       return {
+        btnLoading:false,
         usernameRules: [
           {validate: (val) => !!val, message: '必须填写用户名'},
           {validate: (val) => val.length >= 3, message: '用户名长度大于3'}
@@ -66,6 +67,7 @@
     },
     methods: {
       submit() {
+        this.btnLoading=true;
         this.$refs.form.validate().then((result) => {
           console.log('form valid: ', result)
           if(result){
@@ -78,8 +80,10 @@
         });
       },
       login(){
-        this.$netWork.post('/login')
+        let that=this;
+        this.$netWork.post('/login',this.validateForm)
           .then(function (response) {
+            that.btnLoading=false;
             console.log(response);
           })
           .catch(function (error) {

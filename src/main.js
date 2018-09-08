@@ -7,11 +7,18 @@ import App from './App'
 import router from './router'
 import './assets/tru_style.css'
 import bus from './store/bus'
-import myComponents from './assets/myComponents'
+import store from './store/store'
 
+import muLoading from 'muse-ui-loading'
+import 'muse-ui-loading/dist/muse-ui-loading.css'; // load css
+Vue.use(muLoading)
+
+import muToast from 'muse-ui-toast'
+Vue.use(muToast)
+
+import myComponents from './assets/myComponents'
 Vue.use(myComponents);
 
-import store from './store/store'
 
 Vue.use(ELEMENT);
 
