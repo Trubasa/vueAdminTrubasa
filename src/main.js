@@ -1,13 +1,13 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 // import Vue from 'vue'
-import axios from 'axios'
 import netWork from './assets/netWork'
 import App from './App'
 import router from './router'
 import './assets/tru_style.css'
 import bus from './store/bus'
 import store from './store/store'
+import api from './assets/api'
 
 import muLoading from 'muse-ui-loading'
 import 'muse-ui-loading/dist/muse-ui-loading.css'; // load css
@@ -120,9 +120,8 @@ Vue.use(Tooltip);
 // let elementList=['Menu','Submenu','MenuItem','MenuItemGroup']
 
 Vue.prototype.$netWork=netWork;
-Vue.prototype.$axios=axios;
 Vue.prototype.$bus=bus;
-
+Vue.prototype.$api=api;
 
 //引入element-ui 结束
 

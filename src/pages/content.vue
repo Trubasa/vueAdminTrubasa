@@ -11,13 +11,7 @@
       return {}
     },
     mounted() {
-      this.$netWork.get('/server')
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+
     },
     methods: {}
   }

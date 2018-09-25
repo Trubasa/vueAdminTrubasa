@@ -65,7 +65,7 @@
     },
     methods: {
       submit() {
-        this.$refs.form.validate().then((result) => {
+        /*this.$refs.form.validate().then((result) => {
           console.log('form valid: ', result)
           if(result){
             this.$axios.all([this.getUserInfo(),this.getUserList()])
@@ -76,21 +76,32 @@
           }else{
             // this.$refs.loginBtn.loading=false
           }
+        });*/
+        this.$refs.form.validate().then((result) => {
+          console.log('form valid: ', result)
+          if(result){
+            this.login();
+          }else{
+            this.$refs.loginBtn.loading=false
+          }
         });
+
       },
       login(){
-        let that=this;
-        this.$netWork.post('/login',this.validateForm)
-          .then(function (response) {
-            console.log('loading按钮',that.$refs.loginBtn.loading=false)
+        var that=this;
+        this.$netWork.post({
+          url:'/login',
+          data:this.validateForm,
+          success(res){
+            console.log('login接口返回的数据',res);
             that.$router.push({
               name:'content'
             })
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          },
+          complete(){
+            that.$refs.loginBtn.loading=false
+          }
+        })
       },
       getUserList(){
         return this.$netWork.get('/userList')
