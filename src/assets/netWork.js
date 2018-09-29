@@ -10,15 +10,21 @@ muToast.config({
 
 let page = {
   toastHandler(data) {   // 更加后台返回的数据结构判断是否弹出提示框
-    if (!data || !('show' in data)) {
+    if (!data) {
+      console.error('传入的data为空');
       return;
     }
 
+    data.show=''
     let isShow = data.show;
     let msg = data.msg;
+    if(msg.sqlMessage){
+      msg=msg.sqlMessage
+    }
     if (data.state != 10000) {
       isShow = 4;
     }
+
     //console.log('toastHandler', data);
     if (isShow || isShow == 0) {
       switch (isShow) {
@@ -66,14 +72,19 @@ function netWork(obj) {
   }).then(function (res) {
     page.toastHandler(res.data);
     if(obj.success){
-      obj.success(res)
+      obj.success(res.data)
     }
     if(obj.complete){
       obj.complete(res)
     }
   }).catch(function (err) {
+    if(/timeout/igm.test(err.message)){
+      muToast.error('请求超时')
+    }else{
+      muToast.error(err.message)
+    }
 
-    console.error('network出错',err)
+    console.error('network出错',err.name,err.message)
     if(obj.error){
       obj.error(err)
     }

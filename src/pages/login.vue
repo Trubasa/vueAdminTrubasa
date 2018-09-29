@@ -46,7 +46,7 @@
       return {
         usernameRules: [
           {validate: (val) => !!val, message: '必须填写用户名'},
-          {validate: (val) => val.length >= 3, message: '用户名长度大于3'}
+          /*{validate: (val) => val.length >= 1, message: '用户名长度大于3'}*/
         ],
         passwordRules: [
           {validate: (val) => !!val, message: '必须填写密码'},
@@ -65,18 +65,6 @@
     },
     methods: {
       submit() {
-        /*this.$refs.form.validate().then((result) => {
-          console.log('form valid: ', result)
-          if(result){
-            this.$axios.all([this.getUserInfo(),this.getUserList()])
-              .then(()=>{
-                console.log('可以登录了');
-                this.login()
-              })
-          }else{
-            // this.$refs.loginBtn.loading=false
-          }
-        });*/
         this.$refs.form.validate().then((result) => {
           console.log('form valid: ', result)
           if(result){
@@ -90,13 +78,18 @@
       login(){
         var that=this;
         this.$netWork.post({
-          url:'/login',
+          url:'/system/login',
           data:this.validateForm,
           success(res){
-            console.log('login接口返回的数据',res);
-            that.$router.push({
-              name:'content'
-            })
+
+            if(res.state==10000){
+              that.$toast.success('登陆成功')
+              console.log('login接口返回的数据',res);
+              that.$router.push({
+                name:'mainCon'
+              })
+            }
+
           },
           complete(){
             that.$refs.loginBtn.loading=false
