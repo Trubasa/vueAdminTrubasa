@@ -20,9 +20,14 @@ export default new Router({
       component:resolve => require(['../pages/login'], resolve) //登陆
     },
     {
-      path: '/mainCon',
-      name: 'mainCon',
-      component:resolve => require(['../pages/mainCon'], resolve) //登陆
-    }
+      path: '/content',
+      name: 'content',
+      component:resolve => require(['../pages/truContent'], resolve) //主页面
+    },
+    {
+      path: '*',
+      name: 'notFound',
+      component:resolve => require(['../common/notFound'], resolve) //404
+    },
   ]
 })

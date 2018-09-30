@@ -1,0 +1,39 @@
+
+/*无效果*/
+.no-enter-active {
+  transition: opacity 0.3s;
+}
+.no-leave-active{
+  transition: opacity 0.3s;
+}
+.no-enter, .no-leave-to
+{
+  opacity: 1;
+}
+/*淡入淡出*/
+.fade-enter-active {
+  transition: opacity .3s;
+}
+.fade-leave-active{
+
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
+  opacity: 0;
+}
+/*左侧进入，左侧退出*/
+.left-enter-active {
+  transition: all .3s;
+}
+.left-leave-active{
+  transition: all .3s;
+}
+.left-enter, .left-leave-to /* .fade-leave-active below version 2.1.8 */
+{
+  -webkit-transform: translate(-200px);
+  -moz-transform: translate(-200px);
+  -ms-transform: translate(-200px);
+  -o-transform: translate(-200px);
+  transform: translate(-200px);
+  opacity: 0;
+}

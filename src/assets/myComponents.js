@@ -8,6 +8,7 @@ import truImage from '../common/truImage'
 import truLoadMore from '../common/truLoadMore'
 import truLoadingBtn from '../common/truLoadingBtn'
 import leftMenu from '../common/leftMenu'
+import truPopupPanel from '../common/truPopupPanel'
 
 var myComponents={
   install:function(Vue){
@@ -21,6 +22,7 @@ var myComponents={
     Vue.component(truLoadMore.name,truLoadMore);
     Vue.component(truLoadingBtn.name,truLoadingBtn);
     Vue.component(leftMenu.name,leftMenu);
+    Vue.component(truPopupPanel.name,truPopupPanel);
 
 
   }  //'Loading'这就是后面可以使用的组件的名字，install是默认的一个方法

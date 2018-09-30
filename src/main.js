@@ -8,6 +8,7 @@ import './assets/tru_style.css'
 import bus from './store/bus'
 import store from './store/store'
 import api from './assets/api'
+import './assets/transitionAnimate.css'
 
 import muLoading from 'muse-ui-loading'
 import 'muse-ui-loading/dist/muse-ui-loading.css'; // load css
@@ -122,6 +123,7 @@ Vue.use(Tooltip);
 Vue.prototype.$netWork=netWork;
 Vue.prototype.$bus=bus;
 Vue.prototype.$api=api;
+Vue.prototype.$scheme=scheme
 
 //引入element-ui 结束
 

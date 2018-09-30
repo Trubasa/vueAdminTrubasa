@@ -15,7 +15,7 @@
     },
     mounted(){
       var that=this;
-
+      that.resize();
       window.onresize=function(){
         that.$bus.$emit('resize')
         that.resize()

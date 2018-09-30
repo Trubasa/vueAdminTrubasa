@@ -1,10 +1,10 @@
 <template>
-  <div class="left-menu">
+  <div class="left-menu" :style="{backgroundColor:$scheme.bgColor,borderRight:'1px solid '+$scheme.bgColor}">
     <el-menu default-active="1-4-1"
              class="el-menu-vertical-demo"
-             background-color="#545c64"
-             text-color="#fff"
-             active-text-color="#ffd04b"
+             :background-color="$scheme.bgColor"
+             :text-color="$scheme.textColor"
+             :active-text-color="$scheme.textColorActive"
              @open="handleOpen"
              @close="handleClose"
              :collapse="isCollapse">
@@ -45,9 +45,10 @@
 <script>
   export default {
     name: "left-menu",
+    props:['isCollapse'], //sCollapse 是否折叠
     data() {
       return {
-        isCollapse: true //是否折叠
+
       }
     },
     mounted() {
@@ -66,7 +67,9 @@
 
 <style scoped>
 .left-menu{
-  overflow: hidden;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
 }
 
 </style>
